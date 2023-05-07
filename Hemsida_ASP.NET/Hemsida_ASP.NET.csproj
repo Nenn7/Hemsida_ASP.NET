@@ -11,12 +11,26 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="Models\Dtos\" />
+    <Folder Include="Models\Entities\" />
+    <Folder Include="Models\Identities\" />
+    <Folder Include="Contexts\" />
+    <Folder Include="Models\ViewModels\" />
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="microsoft.aspnetcore.identity.entityframeworkcore" Version="7.0.5" />
+    <PackageReference Include="microsoft.aspnetcore.identity.ui" Version="7.0.5" />
+    <PackageReference Include="microsoft.entityframeworkcore.sqlserver" Version="7.0.5" />
+    <PackageReference Include="microsoft.entityframeworkcore.tools" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

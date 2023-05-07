@@ -6,13 +6,11 @@ namespace kurshemsida.Controllers
 	{
 		public IActionResult Index()
 		{
-			ViewData["Title"] = "Products";
 			return View();
 		}
 
-		public IActionResult Search()
+		public IActionResult Details()
 		{
-			ViewData["Title"] = "Search for products";
 			return View();
 		}
 
