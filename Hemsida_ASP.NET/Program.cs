@@ -1,4 +1,6 @@
 using Hemsida_ASP.NET.Contexts;
+using Hemsida_ASP.NET.Helpers.Repos;
+using Hemsida_ASP.NET.Helpers.Services;
 using Hemsida_ASP.NET.Models.Identities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +12,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Identity")));
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Standard")));
 
+builder.Services.AddScoped<ContactsRepo>();
+builder.Services.AddScoped<ProductsRepo>();
+builder.Services.AddScoped<MessagesRepo>();
+
+builder.Services.AddScoped<ContactsService>();
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(x =>
 {

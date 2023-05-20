@@ -11,10 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\Repos\" />
-    <Folder Include="Helpers\Services\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Models\Dtos\" />
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
 

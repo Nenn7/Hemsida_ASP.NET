@@ -1,4 +1,6 @@
-﻿using Hemsida_ASP.NET.Models.Identities;
+﻿using Hemsida_ASP.NET.Models.Dtos;
+using Hemsida_ASP.NET.Models.Entities;
+using Hemsida_ASP.NET.Models.Identities;
 using Hemsida_ASP.NET.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

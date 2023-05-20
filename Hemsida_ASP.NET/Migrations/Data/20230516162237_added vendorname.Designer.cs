@@ -4,6 +4,7 @@ using Hemsida_ASP.NET.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hemsida_ASP.NET.Migrations.Data
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230516162237_added vendorname")]
+    partial class addedvendorname
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,55 +24,6 @@ namespace Hemsida_ASP.NET.Migrations.Data
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Hemsida_ASP.NET.Models.Entities.ContactEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Company")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Contacts");
-                });
-
-            modelBuilder.Entity("Hemsida_ASP.NET.Models.Entities.ContactMessageEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ContactId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ContactId");
-
-                    b.ToTable("ContactMessages");
-                });
 
             modelBuilder.Entity("Hemsida_ASP.NET.Models.Entities.ProductEntity", b =>
                 {
@@ -131,17 +85,6 @@ namespace Hemsida_ASP.NET.Migrations.Data
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("Hemsida_ASP.NET.Models.Entities.ContactMessageEntity", b =>
-                {
-                    b.HasOne("Hemsida_ASP.NET.Models.Entities.ContactEntity", "Contact")
-                        .WithMany("Messages")
-                        .HasForeignKey("ContactId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Contact");
-                });
-
             modelBuilder.Entity("Hemsida_ASP.NET.Models.Entities.ProductTagEntity", b =>
                 {
                     b.HasOne("Hemsida_ASP.NET.Models.Entities.ProductEntity", "Product")
@@ -159,11 +102,6 @@ namespace Hemsida_ASP.NET.Migrations.Data
                     b.Navigation("Product");
 
                     b.Navigation("Tag");
-                });
-
-            modelBuilder.Entity("Hemsida_ASP.NET.Models.Entities.ContactEntity", b =>
-                {
-                    b.Navigation("Messages");
                 });
 
             modelBuilder.Entity("Hemsida_ASP.NET.Models.Entities.ProductEntity", b =>
