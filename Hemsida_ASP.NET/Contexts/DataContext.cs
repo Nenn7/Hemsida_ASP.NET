@@ -16,5 +16,29 @@ namespace Hemsida_ASP.NET.Contexts
 		public DbSet<ContactEntity> Contacts { get; set; }
 		public DbSet<ContactMessageEntity> ContactMessages { get; set; }
 
-	}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+			var tagNew = new TagEntity
+			{
+				TagId = 1,
+				TagName = "New",
+			};
+
+            var tagPopular = new TagEntity
+            {
+                TagId = 2,
+                TagName = "Popular",
+            };
+
+            var tagFeatured = new TagEntity
+            {
+                TagId = 3,
+                TagName = "Featured",
+            };
+
+            modelBuilder.Entity<TagEntity>().HasData(tagNew, tagPopular, tagFeatured);
+        }
+    }
 }
