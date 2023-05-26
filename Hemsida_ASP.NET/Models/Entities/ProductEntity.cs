@@ -21,27 +21,4 @@ public class ProductEntity
 
 	public ICollection<ProductTagEntity> Tags { get; set; } = new HashSet<ProductTagEntity>();
 
-	public static implicit operator Product(ProductEntity entity)
-	{
-		List<string> TagList = new List<string>();
-
-		foreach (var tag in entity.Tags)
-		{
-			TagList.Add(tag.Tag.TagName);
-		}
-
-		var product = new Product
-		{
-			ArticleId = entity.ArticleId,
-			ProductName = entity.ProductName,
-			ProductImage = entity.ProductImage,
-			Price = entity.Price,
-			Ingress = entity.Ingress,
-			Description = entity.Description,
-			VendorName = entity.VendorName,
-			Tags = TagList
-		};
-
-		return product;
-	}
 }

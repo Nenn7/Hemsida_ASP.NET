@@ -1,7 +1,5 @@
 ﻿using Hemsida_ASP.NET.Models.Entities;
 using Hemsida_ASP.NET.Models.Identities;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.ComponentModel.DataAnnotations;
 
 namespace Hemsida_ASP.NET.Models.ViewModels;
@@ -22,7 +20,7 @@ public class RegisterUserViewModel
 	[RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Email Address not valid")]
 	public string Email { get; set; } = null!;
 
-	[Display(Name = "Phone Number (optional)")]
+	[Display(Name = "Phone Number")]
 	[DataType(DataType.PhoneNumber)]
 	public string PhoneNumber { get; set; } = null!;
 
@@ -76,7 +74,7 @@ public class RegisterUserViewModel
 			Company = model.Company,
 			ProfileImage = model.ProfileImage?.FileName,
 			UserName = model.Email,
-			Address = new List<AccountAddressEntity> // Create a new list for AccountAddresses
+			Address = new List<AccountAddressEntity> 
         {
 			new AccountAddressEntity
 			{
@@ -84,12 +82,6 @@ public class RegisterUserViewModel
 			}
 		}
 		};
-
-		/*var accountAddressEntity = new AccountAddressEntity
-		{
-			User = userEntity,
-			Address = addressEntity,
-		};*/
 
 		return userEntity;
 	}

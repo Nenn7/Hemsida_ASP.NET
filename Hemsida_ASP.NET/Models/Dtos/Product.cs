@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Hemsida_ASP.NET.Models.Entities;
 
 namespace Hemsida_ASP.NET.Models.Dtos;
 
@@ -13,4 +12,28 @@ public class Product
 	public string? Description { get; set; }
 	public string? VendorName { get; set; }
 	public List<string>? Tags { get; set; } = new List<string>();
+
+    public static implicit operator Product(ProductEntity entity)
+    {
+        List<string> TagList = new List<string>();
+
+        foreach (var tag in entity.Tags)
+        {
+            TagList.Add(tag.Tag.TagName);
+        }
+
+        var product = new Product
+        {
+            ArticleId = entity.ArticleId,
+            ProductName = entity.ProductName,
+            ProductImage = entity.ProductImage,
+            Price = entity.Price,
+            Ingress = entity.Ingress,
+            Description = entity.Description,
+            VendorName = entity.VendorName,
+            Tags = TagList
+        };
+
+        return product;
+    }
 }

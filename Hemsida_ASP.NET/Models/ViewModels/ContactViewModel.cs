@@ -26,8 +26,4 @@ public class ContactViewModel
 	[Display(Name = "Your Message:")]
 	[Required]
 	public string Message { get; set; } = null!;
-
-
-	/*[Display(Name = "Save my name and email in this browser for the next time I comment")]
-	public bool SaveUser { get; set; }*/
 }
