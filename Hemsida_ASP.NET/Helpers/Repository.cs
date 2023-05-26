@@ -1,6 +1,5 @@
 ﻿using Hemsida_ASP.NET.Contexts;
 using Microsoft.EntityFrameworkCore;
-using System.Collections;
 using System.Linq.Expressions;
 
 namespace Hemsida_ASP.NET.Helpers;

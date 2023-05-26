@@ -1,5 +1,4 @@
-﻿using Hemsida_ASP.NET.Models.Dtos;
-using Hemsida_ASP.NET.Models.Entities;
+﻿using Hemsida_ASP.NET.Helpers.Services;
 using Hemsida_ASP.NET.Models.Identities;
 using Hemsida_ASP.NET.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -12,11 +11,13 @@ namespace Hemsida_ASP.NET.Controllers
 
 		private readonly UserManager<AppUser> _userManager;
 		private readonly SignInManager<AppUser> _signInManager;
+		private readonly UserService _userService;
 
-		public AccountsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+		public AccountsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, UserService userService)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
+			_userService = userService;
 		}
 
 		public IActionResult Index()
@@ -40,8 +41,15 @@ namespace Hemsida_ASP.NET.Controllers
 				if (await _userManager.FindByEmailAsync(model.Email) == null)
 				{
 					var result = await _userManager.CreateAsync(user, model.Password);
+
 					if (result.Succeeded)
 					{
+						await _userService.AssignRoleAsync(user);
+						if(model.ProfileImage != null)
+						{
+                            await _userService.UploadProfileImageAsync(user, model.ProfileImage);
+                        }
+						
 						return RedirectToAction("Login", "Accounts");
 					}
 					else
@@ -79,6 +87,12 @@ namespace Hemsida_ASP.NET.Controllers
 			return View(model);
 		}
 
+        public async Task<IActionResult> Logout()
+        {
+			await _signInManager.SignOutAsync();
+			return RedirectToAction("Index", "Home");
+        }
 
-	}
+
+    }
 }

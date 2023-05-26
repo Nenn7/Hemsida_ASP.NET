@@ -1,7 +1,6 @@
 ﻿using Hemsida_ASP.NET.Contexts;
 using Hemsida_ASP.NET.Helpers.Repos;
 using Hemsida_ASP.NET.Models.Dtos;
-using Hemsida_ASP.NET.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hemsida_ASP.NET.Helpers.Services
@@ -17,7 +16,16 @@ namespace Hemsida_ASP.NET.Helpers.Services
 			_context = context;
 		}
 
-		public async Task<IEnumerable<Product>> GetProductsByTagNameAsync(string tagName)
+		public async Task<Product> GetAsync(string articleId)
+		{
+			var productEntity = await _productsRepo.GetAsync(x => x.ArticleId == articleId);
+
+			Product product = productEntity;
+
+			return product;
+		}
+
+        public async Task<IEnumerable<Product>> GetProductsByTagNameAsync(string tagName)
 		{
 			var products = await _context.Products
 				.Where(x => x.Tags.Any(x => x.Tag.TagName == tagName))
