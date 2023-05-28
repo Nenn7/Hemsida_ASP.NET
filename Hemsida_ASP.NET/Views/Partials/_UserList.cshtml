@@ -1,0 +1,24 @@
+﻿@model UserListViewModel
+
+<div class="container">
+    <div class="row py-5">
+
+       <div class="col-12 mt-5">
+          <h2 class="text-center">Registered Users:</h2>
+        </div>
+
+        @foreach (var user in Model.Users)
+        {
+            <div class="col-md-4 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">@user.FirstName @user.LastName</h5>
+                        <p class="card-text">Company Name: @user.Company</p>
+                        <p class="card-text">Phone Number: @user.PhoneNumber</p>
+                        <p class="card-text">@user.Email</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
