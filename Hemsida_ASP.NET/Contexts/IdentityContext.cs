@@ -16,6 +16,7 @@ namespace Hemsida_ASP.NET.Contexts
 		public DbSet<AddressEntity> Addresses { get; set; }
 		public DbSet<AccountAddressEntity> AccountAddresses { get; set; }
 
+		//Seeding of identityroles
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			base.OnModelCreating(builder);

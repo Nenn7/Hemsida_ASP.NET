@@ -16,6 +16,7 @@ namespace Hemsida_ASP.NET.Helpers.Services
 			_messagesRepo = messagesRepo;
 		}
 
+		//Checks if a user has submitted a message via the form previously, if not- adds new user + the message, if they have- adds new message for the user
 		public async Task AddOrUpdateContactAsync(ContactViewModel model)
 		{
 			var existingContact = await _contactsRepo.GetAsync(x => x.Email == model.Email);

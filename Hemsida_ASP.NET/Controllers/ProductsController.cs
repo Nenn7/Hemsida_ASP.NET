@@ -25,6 +25,7 @@ namespace kurshemsida.Controllers
 			return View(viewModel);
 		}
 
+		//Shows detailspage depending on articleId
 		public async Task<IActionResult> Details(string articleId)
 		{
 			var product = await _productService.GetAsync(articleId);

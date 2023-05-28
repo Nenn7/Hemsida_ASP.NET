@@ -34,6 +34,8 @@ namespace Hemsida_ASP.NET.Controllers
 		public async Task<IActionResult> Register(RegisterUserViewModel model)
 		{
 
+			//Creates a new appuser if such a user does not already exist
+
 			if (ModelState.IsValid)
 			{
 				AppUser user = model;

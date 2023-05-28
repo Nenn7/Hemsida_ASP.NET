@@ -16,6 +16,7 @@ namespace Hemsida_ASP.NET.Controllers
 			_userManager = userManager;
 		}
 
+		//Displays all standardusers for the admin
 		public async Task<IActionResult> Index()
 		{
 			var viewModel = new UserListViewModel

@@ -16,6 +16,8 @@ namespace Hemsida_ASP.NET.Contexts
 		public DbSet<ContactEntity> Contacts { get; set; }
 		public DbSet<ContactMessageEntity> ContactMessages { get; set; }
 
+        //Seeding of a few sample products and tags
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

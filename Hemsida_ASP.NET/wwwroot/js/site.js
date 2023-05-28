@@ -35,9 +35,6 @@ for (let element of elements) {
 
 function textValidator(target, minLength) {
 
-    //const regEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    // || !regEx.test(target.value
-
     if (target.value.length < minLength)
             document.querySelector(`[data-valmsg-for="${target.id}"]`).innerHTML = `${target.id} is invalid`;
         else

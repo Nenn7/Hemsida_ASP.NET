@@ -18,6 +18,7 @@ namespace kurshemsida.Controllers
 			return View();
 		}
 
+		//Depending if the user email has sent a message via the form previously, adds a new user + message or adds a new message to existing user
 		[HttpPost]
 		public async Task<IActionResult> Index(ContactViewModel model)
 		{

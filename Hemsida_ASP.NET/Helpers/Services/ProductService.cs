@@ -16,6 +16,7 @@ namespace Hemsida_ASP.NET.Helpers.Services
 			_context = context;
 		}
 
+		//Two methods for enabling getting productentities via articleId or tagname, and getting the product dto back
 		public async Task<Product> GetAsync(string articleId)
 		{
 			var productEntity = await _productsRepo.GetAsync(x => x.ArticleId == articleId);
