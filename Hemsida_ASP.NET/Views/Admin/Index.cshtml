@@ -1,4 +1,7 @@
-﻿@{
+﻿@model UserListViewModel
+@{
 	Layout = "_BackofficeLayout";
 	ViewData["Title"] = "Admin";
 }
+
+<partial name= "/Views/Partials/_UserList.cshtml" model="Model" />  
