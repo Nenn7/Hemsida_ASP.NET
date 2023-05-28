@@ -1,3 +1,7 @@
-﻿@{
+﻿@model ProductListViewModel
+
+@{
 	ViewData["Title"] = "Products";
 }
+
+<partial name= "/Views/Partials/_AllProducts.cshtml" model="Model.AllProducts"/>  

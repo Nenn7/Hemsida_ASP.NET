@@ -9,7 +9,14 @@
     <link rel="stylesheet" href="~/css/style.min.css" asp-append-version="true" />
 </head>
 <body>
-    <partial name= "/Views/Partials/_Header.cshtml" />  
+    @if (signInManager.IsSignedIn(User))
+    {
+       <partial name= "/Views/Partials/_HeaderSignedIn.cshtml" />  
+    }
+    else
+    {
+       <partial name= "/Views/Partials/_Header.cshtml" />  
+    }
             @RenderBody()
     <partial name= "/Views/Partials/_Footer.cshtml" />
 
