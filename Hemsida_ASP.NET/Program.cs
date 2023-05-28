@@ -7,16 +7,19 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Identity")));
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Standard")));
 
+//Repositiories
 builder.Services.AddScoped<ContactsRepo>();
 builder.Services.AddScoped<ProductsRepo>();
 builder.Services.AddScoped<MessagesRepo>();
 
+//Services
 builder.Services.AddScoped<ContactsService>();
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<ProductService>();
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(x =>
 {

@@ -13,6 +13,7 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\images\profileImages\" />
   </ItemGroup>
 
   <ItemGroup>

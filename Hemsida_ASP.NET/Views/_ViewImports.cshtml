@@ -1,2 +1,7 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Hemsida_ASP.NET.Models.Identities;
 @using Hemsida_ASP.NET.Models.ViewModels;
+@using Hemsida_ASP.NET.Models.Dtos;
+@using Hemsida_ASP.NET.Models.Entities;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<AppUser> signInManager
