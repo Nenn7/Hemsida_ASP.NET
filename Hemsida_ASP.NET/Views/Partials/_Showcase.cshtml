@@ -1,12 +1,24 @@
-﻿<section class="showcase">
+﻿@model IEnumerable<Product>
+
+<section class="showcase">
         <div class="container">
             <div class="content">
                 <div class="ingress">WELCOME TO BMERKETO SHOP</div>
-                <div class="title">Exclusive Chair gold Collection.</div>
+                <div class="title">Exclusive Gold Collection.</div>
                 <button class="btn-theme">SHOP NOW</button>
             </div>
             <div class="content-image">
-                <img src="images/placeholders/625x647.svg" alt="">
+                <a asp-action="Details" asp-controller="Products" asp-route-articleId="@Model.ElementAt(0).ArticleId" class="collection-item">
+
+                @if (!string.IsNullOrEmpty(Model.ElementAt(0).ProductImage))
+                {
+                    <img src="@($"/images/productImages/{Model.ElementAt(0).ProductImage}")" alt="Product Image" width="270" height="295"/>
+                }
+                else
+                {
+                    <img src="images/placeholders/625x647.svg" alt="Product Image" width="270" height="295">
+                }
+                </a>
             </div>
         </div>
     </section>
