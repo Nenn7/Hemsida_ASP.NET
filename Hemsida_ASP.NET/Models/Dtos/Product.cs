@@ -1,4 +1,5 @@
 ﻿using Hemsida_ASP.NET.Models.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Hemsida_ASP.NET.Models.Dtos;
 
@@ -7,7 +8,9 @@ public class Product
 	public string? ArticleId { get; set; } 
 	public string? ProductName { get; set; }
 	public string? ProductImage { get; set; }
-	public decimal? Price { get; set; }
+
+    [DisplayFormat(DataFormatString = "{0:C0}")]
+    public decimal? Price { get; set; }
 	public string? Ingress { get; set; }
 	public string? Description { get; set; }
 	public string? VendorName { get; set; }

@@ -13,7 +13,8 @@ public class ProductEntity
 	public string? ProductImage { get; set; }
 
 	[Column(TypeName = "money")]
-	public decimal? Price { get; set; }
+    [DisplayFormat(DataFormatString = "{0:C0}")]
+    public decimal? Price { get; set; }
 	public string? Ingress { get; set; }
 	public string? Description { get; set; }
 
