@@ -5,11 +5,12 @@
 }
 
 <section class="contact-form">
-	<div class="container">
+	<div class="container mt-5">
 		<div class="title">Register as a new User:</div>
-		<form method="post" novalidate>
 
-			<div asp-validation-summary="ModelOnly"></div>
+		<div asp-validation-summary="ModelOnly" class="container mb-4 mt-2 text-danger"></div>
+
+		<form method="post" enctype="multipart/form-data" novalidate>
 		
 			<div class="form-group">
 				<label asp-for="FirstName"></label>
@@ -78,7 +79,7 @@
 			</div>
 
 			<div>
-			<button class="btn-theme" type="submit">Register</button>
+			<button class="btn-theme mt-4" type="submit">Register</button>
 			</div>
 		</form>
 	</div>
